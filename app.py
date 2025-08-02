@@ -49,6 +49,3 @@ def show_all_confessions():
     
     # Render the confessions page, passing the list of confessions to the template
     return render_template('confessions.html', confessions=all_confessions)
-
-if __name__ == "_main_":
-    app.run(debug=True)
