@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6 text-gray-800">The Wall of Confessions</h1>
+
+<div class="space-y-4">
+    <!-- We loop through the 'confessions' list passed from app.py -->
+    {% for confession in confessions %}
+        <div class="bg-white p-6 rounded-lg shadow-md transition transform hover:-translate-y-1">
+            <p class="text-gray-700 text-lg">{{ confession.message }}</p>
+            <p class="text-right text-xs text-gray-400 mt-4">
+                <!-- Displaying the timestamp from the database -->
+                Posted on: {{ confession.created_at.split('T')[0] }}
+            </p>
+        </div>
+    {% else %}
+        <!-- This block runs if the 'confessions' list is empty -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <p class="text-gray-500">The wall is empty. Be the first to confess!</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
