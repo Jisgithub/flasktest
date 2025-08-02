@@ -10,7 +10,12 @@
             <p class="text-gray-700 text-lg">{{ confession.message }}</p>
             <p class="text-right text-xs text-gray-400 mt-4">
                 <!-- Displaying the timestamp from the database -->
-                Posted on: {{ confession.created_at.split('T')[0] }}
+                {% if confession.created_at %}
+                    Posted on: {{ confession.created_at.split('T')[0] }}
+                {% else %}
+                    Posted on: Unknown
+                {% endif %}
+
             </p>
         </div>
     {% else %}

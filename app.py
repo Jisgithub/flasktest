@@ -45,7 +45,8 @@ def show_all_confessions():
     response = supabase.table('confessions').select('*').order('created_at', desc=True).execute()
     
     # The actual data is in the 'data' attribute of the response
-    all_confessions = response.data
+    all_confessions = [c for c in response.data if c.get("created_at")]
+
     
     # Render the confessions page, passing the list of confessions to the template
     return render_template('confessions.html', confessions=all_confessions)
